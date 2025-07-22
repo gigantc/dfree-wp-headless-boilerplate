@@ -1,7 +1,0 @@
-# codegen.yml
-overwrite: true
-schema: ${NEXT_PUBLIC_WORDPRESS_URL}/graphql
-generates:
-  ./possibleTypes.json:
-    plugins:
-      - fragment-matcher

@@ -1,36 +1,22 @@
 {
-  "name": "rrheadless-frontend",
-  "version": "0.1.0",
+  "name": "@faustwp/faust-scaffold",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "generate:types": "graphql-codegen --config codegen.yml"
+    "dev": "faust dev",
+    "build": "faust build",
+    "generate": "faust generatePossibleTypes",
+    "start": "faust start",
+    "format": "prettier . --write",
+    "test:format": "prettier . --check"
   },
   "dependencies": {
     "@apollo/client": "^3.13.8",
     "@faustwp/cli": "^3.2.3",
     "@faustwp/core": "^3.2.3",
-    "axios": "^1.10.0",
-    "graphql": "^16.11.0",
-    "gsap": "^3.13.0",
-    "next": "15.4.2",
+    "graphql": "^16.10.0",
+    "next": "^15.3.1",
+    "prettier": "^3.5.3",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "sass": "^1.89.2"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@graphql-codegen/cli": "^5.0.7",
-    "@graphql-codegen/fragment-matcher": "^5.1.0",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "dotenv-cli": "^8.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "15.4.2",
-    "typescript": "^5"
+    "react-dom": "^19.1.0"
   }
 }
