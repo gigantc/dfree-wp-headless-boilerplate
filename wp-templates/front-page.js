@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Link from "next/link";
-import Header from "../components/Header";
-import EntryHeader from "../components/EntryHeader";
-import Footer from "../components/Footer";
-import style from "../styles/front-page.module.css";
+import Header from "../containers/Header/Header";
+import Footer from "../containers/Footer/Footer";
+
+
+
 import { SITE_DATA_QUERY } from "../queries/SiteSettingsQuery";
 import { HEADER_MENU_QUERY } from "../queries/MenuQueries";
 import { useQuery } from "@apollo/client";
