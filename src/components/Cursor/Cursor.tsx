@@ -23,7 +23,7 @@ const Cursor = () => {
       });
     };
 
-    const handleMouseOver = (e) => {
+    const handleMouseOver = (e: MouseEvent) => {
       // Check if hovered element has cursorHover class
       if ((e.target as Element).closest('.cursorHover')) {
         setIsHovering(true);

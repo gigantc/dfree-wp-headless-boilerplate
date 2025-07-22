@@ -1,5 +1,8 @@
-import { config as coreConfig } from '@faustwp/core';
+import { setConfig } from '@faustwp/core';
+import templates from './src/wp-templates';
+import possibleTypes from './possibleTypes.json';
 
-export default coreConfig({
-  wpUrl: 'https://your-wp-site.com', // replace this
+export default setConfig({
+  templates,
+  possibleTypes,
 });
