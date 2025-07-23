@@ -15,6 +15,10 @@ body{
   animation: bodyFade 0.5s forwards;
   margin:0px;
 }
+//hide the finger cursor
+body, a, * {
+  cursor: none;
+}
 // fade in effect on page load if that's your thing
  @keyframes bodyFade {
     0% {

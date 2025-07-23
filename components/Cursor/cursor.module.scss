@@ -1,0 +1,27 @@
+@use "@/styles/variables" as v;
+
+.customCursor {
+  position: fixed;
+  top: var(--cursor-y, 0px);
+  left: var(--cursor-x, 0px);
+  width: 15px; height: 15px;
+  background-color: v.$pink;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  border:0px solid transparent;
+  z-index: 9999;
+  transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  &.hovering{
+    cursor:none;
+    // background: transparent url('../../assets/icons/cursor-link.svg') center no-repeat;
+    // background-position: 2.75px 2.5px; 
+    //background-size: 70%;
+    background:transparent;
+    border:3px solid v.$teal;
+    transform: translate(-50%, -50%) scale(1.5);
+    transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.2s ease-in-out;
+    cursor:none;
+  }
+}
