@@ -49,8 +49,6 @@ export default function Component(props) {
 
       <Header
         siteTitle={siteTitle}
-        siteDescription={siteDescription}
-        menuItems={menuItems}
       />
 
       <main className="container">

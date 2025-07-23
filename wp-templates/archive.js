@@ -117,8 +117,6 @@ export default function ArchivePage(props) {
 
       <Header
         siteTitle={siteTitle}
-        siteDescription={siteDescription}
-        menuItems={menuItems}
       />
 
       <main className="container mx-auto px-4">

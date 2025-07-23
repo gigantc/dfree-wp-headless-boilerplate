@@ -1,7 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 import Head from "next/head";
-import Header from "../containers/Header/Header";
-import Footer from "../containers/Footer/Footer";
+import Header from "@/containers/Header/Header";
+import Footer from "@/containers/Footer/Footer";
 
 
 import EntryHeader from "../components/EntryHeader";
@@ -69,8 +69,6 @@ export default function SinglePage(props) {
 
       <Header
         siteTitle={siteTitle}
-        siteDescription={siteDescription}
-        menuItems={menuItems}
       />
 
       <main className="container">
