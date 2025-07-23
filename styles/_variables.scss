@@ -1,0 +1,79 @@
+//////////////////////////////////////
+// VARIABLES AND MIXINS
+
+
+
+// COLORS -----------------------
+//Not Quite Black
+$black: #1C1C1C;
+//Not Quite White
+$white: #FFFAE7;
+//More Than Yellow
+$yellow: #C2FF00;
+//Too Blue
+$blue: #1405ff;
+//Pretty Pink
+$pink: #ff00b7;
+// Just Teal
+$teal: #00DEB5;
+//More Than Orange
+$red: #FF2300;
+//Nicely Gray
+$gray: #c4c0bc;
+
+
+
+
+
+// FONTS -----------------------
+$roboto: 'Roboto', serif;
+
+
+
+// MIXINS -----------------------
+@mixin breakpoint($size) { 
+ @media screen and (max-width: $size) { @content; } 
+}
+
+@mixin breakpoint-min($size) {
+  @media screen and (min-width: $size) { @content; } 
+}
+
+@mixin trans($sec){
+  -webkit-transition: all ($sec) ease-in-out;
+  -moz-transition: all ($sec) ease-in-out;
+  -o-transition: all ($sec) ease-in-out;
+  transition: all ($sec) ease-in-out;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+
+@mixin gradient($color1, $color2){
+  background: $color1;
+  background: -moz-linear-gradient(-45deg, $color1 0%, $color2 100%);
+  background: -webkit-linear-gradient(-45deg, $color1 0%,$color2 100%);
+  background: linear-gradient(160deg, $color1 0%,$color2 100%);
+}
+
+
+// FUNCTIONS -----------------------
+// It strips the unit of measure and returns it
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// Converts px to rem
+@function calculateRem($size) {
+  $remSize: $size / $rem-base;
+  @return #{$remSize}rem;
+}
+
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}

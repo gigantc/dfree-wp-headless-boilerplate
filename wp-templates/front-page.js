@@ -33,8 +33,8 @@ const FrontPage = (props) => {
 
       <Header siteTitle={siteTitle} />
 
-      <main>
-        <p>hello.</p>
+      <main className="container">
+        <p>hello. This is a FRONT PAGE template.</p>
       </main>
 
       <Footer />

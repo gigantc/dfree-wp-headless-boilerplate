@@ -4,7 +4,6 @@ import Header from "@/containers/Header/Header";
 import Footer from "@/containers/Footer/Footer";
 
 
-import EntryHeader from "../components/EntryHeader";
 import { SITE_DATA_QUERY } from "../queries/SiteSettingsQuery";
 import { HEADER_MENU_QUERY } from "../queries/MenuQueries";
 import { getNextStaticProps } from "@faustwp/core";

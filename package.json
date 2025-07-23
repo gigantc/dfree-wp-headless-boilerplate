@@ -1,5 +1,8 @@
 {
-  "name": "@faustwp/faust-scaffold",
+  "name": "@dfree/headless-wp-boilerplate",
+  "version": "1.0.0",
+  "description": "A React/Faust boilerplate for creating custom, headless, Wordpress sites.",
+  "author": "dFree",
   "private": true,
   "scripts": {
     "dev": "faust dev",
