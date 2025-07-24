@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Header from "@/containers/Header/Header";
 import Footer from "@/containers/Footer/Footer";
+import Loader from "@/components/Loader/Loader";
 
 
 import { SITE_DATA_QUERY } from "../queries/SiteSettingsQuery";
@@ -9,11 +10,11 @@ import { useQuery } from "@apollo/client";
 import { getNextStaticProps } from "@faustwp/core";
 
 
-
 const FrontPage = (props) => {
-  
+
+
   if (props.loading) {
-    return <>Loading...</>;
+    return <Loader />;
   }
 
   const siteDataQuery = useQuery(SITE_DATA_QUERY) || {};

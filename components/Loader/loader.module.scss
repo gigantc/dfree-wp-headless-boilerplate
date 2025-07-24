@@ -1,0 +1,39 @@
+@use "@/styles/variables" as v;
+
+.loadingContainer{
+  position:fixed;
+  top:0; left:0;
+  height:100%; width:100%;
+  background-color:v.$black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  .loader{
+    position:relative;
+    width: 40px; height:40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      radial-gradient(farthest-side, v.$pink 94%,#0000),
+      radial-gradient(farthest-side,v.$teal 94%,#0000),
+      radial-gradient(farthest-side,v.$yellow 94%,#0000),
+      radial-gradient(farthest-side,v.$blue 94%,#0000),
+      v.$pink;
+    background-size: 105% 105%;
+    background-repeat: no-repeat;
+    animation: l5 2s infinite; 
+  }
+  @keyframes l5 {
+    0%  {background-position: 50% -50px,-40px 50%, 50% calc(100% + 50px),calc(100% + 50px) 50%}
+    20%,
+    25% {background-position: 50% -50px,-50px 50%, 50% calc(100% + 50px),50% 50%}
+    45%,
+    50% {background-position: 50% -50px,-50px 50%, 50% 50%              ,50% 50%}
+    75%,
+    75% {background-position: 50% -50px, 50%  50%, 50% 50%              ,50% 50%}
+    95%,
+    100%{background-position: 50%  50% , 50%  50%, 50% 50%              ,50% 50%}
+  }
+}
+
+
