@@ -20,7 +20,7 @@
     //background-size: 70%;
     background:transparent;
     border:3px solid v.$teal;
-    transform: translate(-50%, -50%) scale(1.5);
+    transform: translate(-50%, -50%) scale(1);
     transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.2s ease-in-out;
     cursor:none;
   }
