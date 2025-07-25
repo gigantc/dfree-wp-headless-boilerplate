@@ -15,9 +15,13 @@ body{
   animation: bodyFade 0.5s forwards;
   margin:0px;
 }
-//hide the finger cursor
+//hide the cursor everywhere
 body, a, * {
   cursor: none;
+}
+//except the next.js portal cause that sucks in dev
+nextjs-portal, nextjs-portal * {
+  cursor: auto !important;
 }
 // fade in effect on page load if that's your thing
  @keyframes bodyFade {
@@ -98,3 +102,6 @@ p{
 
 
 
+.nextjs-portal{
+  opacity:0.5;
+}

@@ -54,6 +54,7 @@ const Page = (props) => {
       <Header siteTitle={siteTitle} />
       <main className="container">
         <h1>{title}</h1>
+        <pre>{JSON.stringify(props, null, 2)}</pre>
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </main>
       <Footer />
