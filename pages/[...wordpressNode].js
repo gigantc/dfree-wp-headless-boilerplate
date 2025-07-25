@@ -1,7 +1,19 @@
 import { getWordPressProps, WordPressTemplate } from "@faustwp/core";
 
 export default function Page(props) {
-  return <WordPressTemplate {...props} />;
+  // Try to get content from all likely places:
+  const html =
+    props?.data?.page?.content ||
+    props?.data?.post?.content ||
+    props?.data?.node?.content ||
+    "";
+
+  return (
+    <>
+      <WordPressTemplate {...props} />
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+    </>
+  );
 }
 
 export function getStaticProps(ctx) {

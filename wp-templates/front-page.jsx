@@ -1,18 +1,37 @@
+
 import Head from "next/head";
 import Header from "@/containers/Header/Header";
 import Footer from "@/containers/Footer/Footer";
 
-import { gql } from "@apollo/client";
+import { PAGE_QUERY } from "../queries/PageQuery";
 import { SITE_DATA_QUERY } from "../queries/SiteSettingsQuery";
 import { HEADER_MENU_QUERY } from "../queries/MenuQueries";
 import { useQuery } from "@apollo/client";
 import { getNextStaticProps } from "@faustwp/core";
 
-
+import BlockRenderer from "@/components/BlockRenderer/BlockRenderer";
 
 //////////////////////////////////////
 // COMPONENT
 const FrontPage = (props) => {
+  
+  // console.log('Current page props:', props);
+
+  const renderBlock = (block, i) => {
+    // Ignore blank/empty blocks
+    if (!block.blockName) return null;
+
+    // Look up React component by blockName
+    const BlockComponent = BLOCK_COMPONENTS[block.blockName];
+    if (BlockComponent) {
+      // For ACF blocks, pass block.attrs.data as props
+      return <BlockComponent key={i} {...(block.attrs?.data || {})} />;
+    }
+    // Fallback for unknown blocks
+    // You might want to log these for dev/debug
+    console.warn("Unknown block:", block.blockName, block);
+    return <div key={i}>Unknown block: {block.blockName}</div>;
+  };
 
 
   //////////////////////////////////////
@@ -20,8 +39,18 @@ const FrontPage = (props) => {
   const siteDataQuery = useQuery(SITE_DATA_QUERY) || {};
   const siteData = siteDataQuery?.data?.generalSettings || {};
   const { title: siteTitle, description: siteDescription } = siteData;
-  const { page } = props?.data || {};
-  console.log('full props:', props.data);
+  // Extract the first page.content from __FAUST_QUERIES__
+  //we need this for blocks
+  let blocksRaw = null;
+  const queries = props.__FAUST_QUERIES__ || {};
+  for (const key in queries) {
+    if (queries[key]?.page?.content) {
+      content = queries[key].page.content;
+    }
+    if (queries[key]?.page?.blocksRaw) {
+      blocksRaw = queries[key].page.blocksRaw;
+    }
+  }
 
 
   //////////////////////////////////////
@@ -35,8 +64,7 @@ const FrontPage = (props) => {
       <Header siteTitle={siteTitle} />
 
       <main className="container">
-        <p>blocks below</p>
-        <div dangerouslySetInnerHTML={{ __html: page?.content }} />
+        <BlockRenderer blocks={blocksRaw} />
       </main>
 
       <Footer />
@@ -47,31 +75,19 @@ const FrontPage = (props) => {
 
 //////////////////////////////////////
 // PROPS AND QUERIES
+
+//just returns props
 const getStaticProps = async (context) =>
   getNextStaticProps(context, {
     Page: FrontPage,
     revalidate: 60,
   });
 
-//get blocks on the page
-const FRONT_PAGE_QUERY = gql`
-  query GetFrontPage($databaseId: ID!) {
-    page(id: $databaseId, idType: DATABASE_ID) {
-      title
-      content
-    }
-  }
-`;
-
+//run em
 FrontPage.queries = [
-  { 
-    query: FRONT_PAGE_QUERY,
-    variables: (props) => {
-  console.log('props in variables:', props);
-  return {
-    databaseId: props?.__SEED_NODE__?.databaseId || 6, // Replace 1 with your front page's databaseId if you know it!
-  };
-}
+  {
+    query: PAGE_QUERY,
+    variables: props => ({ databaseId: props?.databaseId })
   },
   { query: SITE_DATA_QUERY },
   { query: HEADER_MENU_QUERY },
