@@ -16,7 +16,10 @@ const getDomain = (url) => {
  **/
 module.exports = withFaust({
   images: {
-    domains: [getDomain(wordpressUrl)],
+    domains: [
+      getDomain(wordpressUrl),
+      "rrpartners.com"
+    ],
   },
   trailingSlash: true,
 });

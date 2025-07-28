@@ -1,10 +1,69 @@
+//IMPORTS -----------------------
+@use "@/styles/variables" as v;
+
 .globalHeader{
-  background-color:black;
-  padding: 5px 25px;
-  border-radius:25px;
-  width:calc(100% - 66px);
-  margin:8px auto 0px;
-  h1{
-    color:white;
+  z-index: 999;
+  position: fixed;
+  width: calc(100% - 160px); height: 100px;
+  background: v.$black;
+  top: 0px;
+  padding:0px 80px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  @include v.breakpoint(900px){
+    width: calc(100% - 50px);
+    height:50px;
+    padding:0px 25px;
+  }
+
+  .logo{
+    img{
+      width:123px;
+      @include v.breakpoint(900px){width:75px;}
+    }
+  }
+  .hamIcon{
+    position:relative;
+    height:18px; width:15px;
+    border-radius:12px;
+    padding: 10px 12px;
+    border:2px solid v.$white;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    @include v.trans(0.2s);
+    @include v.breakpoint(900px){
+      height:17px; width:20px;
+      padding: 5px;
+    }
+    &:hover{
+      border:2px solid v.$pink;
+      @include v.trans(0.2s);
+    }
+    span{
+      display:block;
+      height:2px; width:100%;
+      margin:2px 0px;
+      background-color: v.$white;
+      @include v.trans(0.2s);
+      @include v.breakpoint(900px){width:80%;}
+    }
+    &.open{
+      span:first-of-type{
+        @include v.trans(0.2s);
+        transform: translate(0px, 6px) rotate(45deg)
+      }
+      span:nth-of-type(2){
+        @include v.trans(0.2s);
+        opacity:0;
+      }
+      span:last-of-type{
+        @include v.trans(0.2s);
+        transform:translate(0px, -6px) rotate(-45deg)
+      }
+    }
   }
 }
