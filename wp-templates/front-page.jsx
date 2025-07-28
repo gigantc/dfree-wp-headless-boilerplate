@@ -47,7 +47,7 @@ const FrontPage = (props) => {
 
       <Header siteTitle={siteTitle} />
 
-      <main className="container">
+      <main>
         <BlockRenderer blocks={typeof blocksRaw === "string" ? JSON.parse(blocksRaw) : blocksRaw} />
       </main>
 
