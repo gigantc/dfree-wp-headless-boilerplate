@@ -17,22 +17,6 @@ const FrontPage = (props) => {
   
   // console.log('Current page props:', props);
 
-  const renderBlock = (block, i) => {
-    // Ignore blank/empty blocks
-    if (!block.blockName) return null;
-
-    // Look up React component by blockName
-    const BlockComponent = BLOCK_COMPONENTS[block.blockName];
-    if (BlockComponent) {
-      // For ACF blocks, pass block.attrs.data as props
-      return <BlockComponent key={i} {...(block.attrs?.data || {})} />;
-    }
-    // Fallback for unknown blocks
-    // You might want to log these for dev/debug
-    console.warn("Unknown block:", block.blockName, block);
-    return <div key={i}>Unknown block: {block.blockName}</div>;
-  };
-
 
   //////////////////////////////////////
   // DATA
@@ -64,7 +48,7 @@ const FrontPage = (props) => {
       <Header siteTitle={siteTitle} />
 
       <main className="container">
-        <BlockRenderer blocks={blocksRaw} />
+        <BlockRenderer blocks={typeof blocksRaw === "string" ? JSON.parse(blocksRaw) : blocksRaw} />
       </main>
 
       <Footer />

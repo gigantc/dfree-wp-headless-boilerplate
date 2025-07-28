@@ -1,77 +1,62 @@
-import { gql, useQuery } from "@apollo/client";
+//////////////////////////////////////
+// IMPORTS
 import Head from "next/head";
 import Header from "@/containers/Header/Header";
 import Footer from "@/containers/Footer/Footer";
 
-
+import { PAGE_QUERY } from "../queries/PageQuery";
 import { SITE_DATA_QUERY } from "../queries/SiteSettingsQuery";
 import { HEADER_MENU_QUERY } from "../queries/MenuQueries";
-import { getNextStaticProps } from "@faustwp/core";
+import { useQuery } from "@apollo/client";
 
-const PAGE_QUERY = gql`
-  query GetPage($databaseId: ID!, $asPreview: Boolean = false) {
-    page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
-      title
-      content
+import BlockRenderer from "@/components/BlockRenderer/BlockRenderer";
+
+//////////////////////////////////////
+// COMPONENT
+const Page = (props) => {
+  //////////////////////////////////////
+  // DATA
+  const siteDataQuery = useQuery(SITE_DATA_QUERY) || {};
+  const siteData = siteDataQuery?.data?.generalSettings || {};
+  const { title: siteTitle, description: siteDescription } = siteData;
+
+  // Extract the first page.content from __FAUST_QUERIES__ (for blocks)
+  let blocksRaw = null;
+  const queries = props.__FAUST_QUERIES__ || {};
+  for (const key in queries) {
+    if (queries[key]?.page?.blocksRaw) {
+      blocksRaw = queries[key].page.blocksRaw;
+      break;
     }
   }
-`;
 
-const Page = (props) => {
-  const { loading: propsLoading, __SEED_NODE__ } = props;
-
-  if (propsLoading) return <>Loading...</>;
-
-  const { databaseId, asPreview } = __SEED_NODE__;
-
-  const {
-    data,
-    loading = true,
-    error,
-  } = useQuery(PAGE_QUERY, {
-    variables: { databaseId, asPreview },
-    notifyOnNetworkStatusChange: true,
-    fetchPolicy: "cache-and-network",
-  });
-
-  const { data: siteDataRes } = useQuery(SITE_DATA_QUERY) || {};
-  const { data: headerMenuRes } = useQuery(HEADER_MENU_QUERY) || {};
-
-  if (loading && !data) return <div>Loading...</div>;
-  if (error) return <p>Error! {error.message}</p>;
-  if (!data?.page) return <p>No pages have been published</p>;
-
-  const siteData = siteDataRes?.generalSettings || {};
-  const menuItems = headerMenuRes?.primaryMenuItems?.nodes || [];
-  const { title: siteTitle } = siteData;
-  const { title, content } = data.page;
-
+  //////////////////////////////////////
+  // RENDER
   return (
     <>
       <Head>
-        <title>{`${title} - ${siteTitle}`}</title>
+        <title>{siteTitle}</title>
       </Head>
       <Header siteTitle={siteTitle} />
       <main className="container">
-        <h1>{title}</h1>
-        <pre>{JSON.stringify(props, null, 2)}</pre>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <BlockRenderer blocks={typeof blocksRaw === "string" ? JSON.parse(blocksRaw) : blocksRaw} />
       </main>
       <Footer />
     </>
   );
 };
 
+//////////////////////////////////////
+// PROPS AND QUERIES
 Page.queries = [
   {
     query: PAGE_QUERY,
-    variables: ({ databaseId }, ctx) => ({
-      databaseId,
-      asPreview: ctx?.asPreview,
-    }),
+    variables: props => ({ databaseId: props?.databaseId })
   },
   { query: SITE_DATA_QUERY },
   { query: HEADER_MENU_QUERY },
 ];
 
+//////////////////////////////////////
+// EXPORT
 export default Page;
