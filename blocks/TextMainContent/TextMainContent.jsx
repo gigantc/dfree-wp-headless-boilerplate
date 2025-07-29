@@ -22,6 +22,8 @@ const TextMainContent = (props) => {
   //we only showing the cols if one of these exists
   const showCols = left_copy || right_copy || cta;
 
+  
+
   //////////////////////////////////////
   // RENDER
   return (
@@ -45,7 +47,7 @@ const TextMainContent = (props) => {
             {headline}
           </h1>
         )}
-        
+
         {subheading && (
            <h6>{subheading}</h6>
         )} 

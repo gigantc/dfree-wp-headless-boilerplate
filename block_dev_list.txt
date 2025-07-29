@@ -1,0 +1,135 @@
+///////////////////////////////
+Components List
+///////////////////////////////
+
+Key:
+** CREATED
+$$ In Dev
+
+
+
+** HeroPage 
+	- Image or Video
+
+HeroCaseStudy
+	- Headline (Long text? can we auto detect?)
+	- Poster Image
+	- Mobile Poster Image
+	- Video Link
+	- 
+
+$$ ImageFullWidth
+	- full, no container
+	- full, w/ container and border
+	- Image
+
+ImageOrVideoTextPair
+	- Image/Video
+	- Text
+	- h3, larger text things
+	- left/right aligned
+
+VideoFullWidth
+	- full, no container
+	- full, w/ container and border
+	- video like
+
+VideoPhoneList
+	- Light/Dark Theme
+	- Repeater
+		- video
+		- copy 
+	- CTA
+
+TextAnimated
+	- Copy
+	- SVG
+
+**TextMainContent
+	- Light/Dark Theme
+	- headling color
+	- Is this an H1? (Detect if it's first page elememt)
+	- type (2 col with subheadline)
+	- Headline
+	- subheadline
+	- copy/CTA
+
+TextLargeHeadline
+	- Light/Dark Theme
+	- headling color
+	- Is this an H1? (Detect if it's first page elememt)
+	- Headline
+	- Centered?
+
+TextSmallHeadline
+	- Light/Dark Theme
+	- headling color
+	- Headline
+	- Centered?
+
+TextParagraph
+	- Light/Dark Theme 
+	- copy
+	- single or two column
+	- Centered?
+
+TextThreeColumn
+	- Light/Dark Theme 
+	- Repeater
+		- Title
+		- Copy
+
+TextWYSIWYG
+	- WYSIWYG
+
+TextLargeQuote
+	- theme
+	- headline (Large or Small or autodetect)
+	- has Citation
+
+GalleryImageVideo
+	- Headline 
+	- Copy
+	- Repeater
+		- Image/Video
+
+GalleryImageSlider
+	- Repeater
+		- Image
+
+WorkCards
+ - Light/Dark Theme
+ - Repeater
+ 	- image
+ 	- Title
+ 	- link
+
+CTAFullWidth
+  - Light/Dark Theme
+  - link
+
+CTASmall
+  - Light/Dark Theme
+  - link
+
+TeamList
+	- Repeater
+		- Image
+		- Name
+		- Title
+		- Copy
+
+StatsBlock
+	- copy
+	- repeater
+		- Main Text
+		- sub text
+
+Form
+	- color themes
+	- title
+	- copy
+	- gravity form
+
+PrevNextWorkArrows
+	- just need to enable
