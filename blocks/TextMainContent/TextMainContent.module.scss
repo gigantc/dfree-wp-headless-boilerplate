@@ -2,10 +2,12 @@
 
 .textMainContent{
   position:relative;
+  padding:60px 0px;
   &--light {background-color: v.$white;}
   &--dark {background-color: v.$black;}
   .heading{
     text-wrap: balance;
+    margin:0px 0px 60px 0px;
     &--black{color:v.$black;}
     &--white{color:v.$white;}
     &--yellow{color:v.$yellow;}
@@ -14,6 +16,10 @@
     &--teal{color:v.$teal;}
     &--red{color:v.$red;}
     &--gray{color:v.$gray;}
+  }
+  h6{
+    text-wrap: balance;
+    margin:0px 0px 60px 0px;
   }
 
   .cols{
@@ -24,6 +30,9 @@
     span{
       display:block;
       flex: 1;
+      h3, p{
+        margin:0px;
+      }
     }
   }
 }

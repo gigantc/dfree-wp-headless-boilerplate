@@ -1,16 +1,25 @@
 import styles from './CTA.module.scss';
-import Link from 
+import Link from 'next/link';
+import Arrow from './assets/arrow.svg';
 
-const CTA = () => {
+const CTA = ({ cta }) => {
 
-
-//////////////////////////////////////
-  // RENDER
   return (
-    <>
-
-    </>
+    <Link className={styles.cta} href={cta.url} target={cta.target}>
+      {cta.title}
+      <Arrow />
+    </Link>
   );
-}; 
+};
 
 export default CTA;
+
+
+
+
+
+
+
+
+
+

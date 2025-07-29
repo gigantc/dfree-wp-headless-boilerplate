@@ -1,0 +1,25 @@
+@use "@/styles/variables" as v;
+
+.cta{   
+  font:700 30px/30px v.$plak;
+  color:v.$red;
+  text-transform:uppercase;
+  @include v.breakpoint(1024px){font:700 24px/24px v.$plak;}
+  @include v.breakpoint(900px){font:700 18px/18px v.$plak;}
+  svg{
+    width:67px;
+    margin:0px 10px 0px 0px;
+    transform: translate(6px, 2px);
+    @include v.trans(0.2s);
+    @include v.breakpoint(1024px){transform: translate(6px, 1px);}
+    @include v.breakpoint(900px){transform: translate(-12px, 3px) scale(0.5); }
+  }
+  &:hover{
+    svg{
+      @include v.trans(0.2s);
+      transform: translate(10px, 2px);
+      @include v.breakpoint(1024px){transform: translate(10px, 1px);}
+      @include v.breakpoint(900px){transform: translate(-12px, 3px) scale(0.5); }
+    }
+  }
+}

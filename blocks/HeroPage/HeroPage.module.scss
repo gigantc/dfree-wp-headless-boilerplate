@@ -7,6 +7,7 @@
   z-index:1;
   background-color:v.$white;
   padding: 80px 0px 0px 0px;
+  margin:0px 0px 60px 0px;
   @include v.breakpoint(900px){padding: 30px 0px 0px 0px;}
   .mediaContainer{  
     position:relative;
