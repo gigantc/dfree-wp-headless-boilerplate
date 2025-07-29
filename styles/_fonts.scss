@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Kepler Std';
+  src: url('/fonts/KeplerStd-CnSubh.woff2') format('woff2'),
+      url('/fonts/KeplerStd-CnSubh.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Neue Plak';
+  src: url('/fonts/NeuePlak-Regular.woff2') format('woff2'),
+       url('/fonts/NeuePlak-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Plak';
+  src: url('/fonts/NeuePlak-Bold.woff2') format('woff2'),
+       url('/fonts/NeuePlak-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Neue Plak Compressed';
+  src: url('/fonts/NeuePlak-CompBold.woff2') format('woff2'),
+      url('/fonts/NeuePlak-CompBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

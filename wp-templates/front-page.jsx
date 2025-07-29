@@ -15,8 +15,6 @@ import BlockRenderer from "@/components/BlockRenderer/BlockRenderer";
 // COMPONENT
 const FrontPage = (props) => {
   
-  // console.log('Current page props:', props);
-
 
   //////////////////////////////////////
   // DATA

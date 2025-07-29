@@ -55,8 +55,7 @@ const AppShell2600 = ({ Component, pageProps }) => {
   return (
     <FaustProvider pageProps={pageProps}>
       <Cursor />
-      {loading && <Loader />}
-      <Component {...pageProps} key={router.asPath} />
+      {loading ? <Loader /> : <Component {...pageProps} key={router.asPath} />}
     </FaustProvider>
   );
 };

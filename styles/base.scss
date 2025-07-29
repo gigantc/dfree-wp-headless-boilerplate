@@ -3,6 +3,7 @@
 
 //IMPORTS -----------------------
 @use "./variables" as v;
+@use "./fonts" as *;
 
 
 body{
@@ -37,11 +38,11 @@ nextjs-portal, nextjs-portal * {
 
 //Text Selection -----------------------
 ::selection {
-  background: v.$black;
+  background: v.$pink;
   color:v.$white;
 }
 ::-moz-selection {
-  background: v.$black;
+  background: v.$pink;
   color:v.$white;
 }
 
@@ -54,7 +55,7 @@ main{
 
 .container{
   position:relative;
-  width:calc(100% - 50px);
+  width:calc(100% - 180px);
   margin:0px auto;
 }
 
@@ -72,15 +73,24 @@ a{
 }
 
 h1{
-  
+  text-transform: uppercase;
+  font: 700 170px/155px v.$plak-comp; 
+  margin:0px;
+  vertical-align: middle;
+  @include v.breakpoint(1024px) {
+    font: 700 140px/125px v.$plak-comp; 
+  }
+  @include v.breakpoint(900px){  
+    font: 700 60px/55px v.$plak-comp; 
+  }
 }
 
 h2{
-  
+  font: 700 150px / 135px v.$plak-comp;
 }
 
 h3{
-  
+  font: 400 45px / 45px v.$kepler;
 }
 
 h4{
@@ -92,16 +102,38 @@ h5{
 }
 
 h6{
-  
+  font: 400 24px / 36px v.$plak;
 }
 
 p{
-
+  font: 400 22px/36px v.$plak;
 }
 
 
 
 
-.nextjs-portal{
-  opacity:0.5;
+// Global Components -----------------------
+// TODO : Create components out of these
+.cta{   
+  font:700 30px/30px v.$plak;
+  color:v.$red;
+  text-transform:uppercase;
+  @include v.breakpoint(1024px){font:700 24px/24px v.$plak;}
+  @include v.breakpoint(900px){font:700 18px/18px v.$plak;}
+  svg{
+  margin:0px 10px 0px 0px;
+  transform: translate(6px, -2px);
+  @include v.trans(0.2s);
+  @include v.breakpoint(1024px){transform: translate(6px, 1px);}
+  @include v.breakpoint(900px){transform: translate(-12px, 3px) scale(0.5); }
+  
+  }
+  &:hover{
+    svg{
+      @include v.trans(0.2s);
+      transform: translate(10px, -2px);
+      @include v.breakpoint(1024px){transform: translate(10px, 1px);}
+      @include v.breakpoint(900px){transform: translate(-12px, 3px) scale(0.5); }
+    }
+  }
 }

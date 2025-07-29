@@ -1,0 +1,40 @@
+@use "@/styles/variables" as v;
+
+.textMainContent{
+  position:relative;
+  &--light {background-color: v.$white;}
+  &--dark {background-color: v.$black;}
+  .heading{
+    text-wrap: balance;
+    &--black{color:v.$black;}
+    &--white{color:v.$white;}
+    &--yellow{color:v.$yellow;}
+    &--blue{color:v.$blue;}
+    &--pink{color:v.$pink;}
+    &--teal{color:v.$teal;}
+    &--red{color:v.$red;}
+    &--gray{color:v.$gray;}
+  }
+
+  .cols{
+    display:flex;
+    align-items:flex-start;
+    justify-content: space-between;
+    gap:200px;
+    span{
+      display:block;
+      flex: 1;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+

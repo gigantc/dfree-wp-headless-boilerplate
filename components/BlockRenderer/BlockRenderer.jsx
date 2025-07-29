@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
 import { useEffect, useState } from "react";
+
 const WP_URL = process.env.NEXT_PUBLIC_WORDPRESS_URL;
 
 
@@ -13,8 +14,6 @@ const pascalCase = (slug) =>
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
-
-
 
 
 //////////////////////////////////////
@@ -216,7 +215,7 @@ const BlockRenderer = ({ blocks }) => {
       </Suspense>
     );
   });
-  
+
 };
 
 export default BlockRenderer;
