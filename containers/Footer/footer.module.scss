@@ -1,10 +1,81 @@
+//IMPORTS -----------------------
+@use "@/styles/variables" as v;
+
+
 .globalFooter{
-  background-color:black;
-  padding: 5px 25px;
-  border-radius:25px;
-  width:calc(100% - 66px);
-  margin:8px auto 0px;
-  p{
-    color:white;
+  padding: 60px 0px;
+  @include v.breakpoint(500px){padding: 60px 0px 20px 0px;}
+  img{width:107px;}
+  svg path{fill:v.$black;}
+
+  .wrap{
+    display:flex;
+    align-items:center;
+    justify-content: flex-start;
+    @include v.breakpoint(960px){flex-wrap:wrap;}
+  }
+
+  .social{
+    padding:0px 0px 0px 52px;
+    @include v.breakpoint(500px){
+      width:100%;
+      margin:52px 0px 15px 0px;
+      padding:0px;
+    }
+    a{
+      svg{
+        height:25px; width:25px;
+        margin:0px 15px;
+        @include v.breakpoint(1127px){
+          margin:0px 5px;
+          height:20px; width:20px;
+        }
+        @include v.breakpoint(500px){
+          margin:0px 15px 0px 0px;
+        }
+      }
+      svg path{
+        fill:v.$black;
+        @include v.trans(0.2s);
+      }
+      &:hover{
+        svg path{
+          fill:v.$pink;
+          @include v.trans(0.2s);
+        }
+      }
+    }
+    
+  }
+  ul{
+    padding:0px;
+    list-style:none;
+    display:flex;
+    margin-left: auto;
+    @include v.breakpoint(960px){
+      width:100%;
+      margin:30px 0px 0px -13px;
+    }
+    @include v.breakpoint(500px){
+      display:block;
+      margin:30px 0px 0px 0px;
+    }
+    li{
+      margin:0px 15px;
+      color:v.$black;
+      text-transform:uppercase;
+      max-width:170px;
+      font:400 14px/20px v.$plak;
+      @include v.breakpoint(1127px){font:400 12px/18px v.$plak;}
+      @include v.breakpoint(500px){margin:0px 0px 15px 0px;}
+      a{
+        color:v.$black;
+        @include v.trans(0.2s);
+        &:hover{
+          color:v.$pink;
+          @include v.trans(0.2s);
+        }
+      }
+    }
   }
 }
