@@ -18,7 +18,7 @@ HeroCaseStudy
 	- Video Link
 	- 
 
-$$ ImageFullWidth
+** ImageFullWidth
 	- full, no container
 	- full, w/ container and border
 	- Image
@@ -104,7 +104,7 @@ WorkCards
  	- Title
  	- link
 
-CTAFullWidth
+&& CTAFullWidth
   - Light/Dark Theme
   - link
 

@@ -1,6 +1,6 @@
 import styles from './CTA.module.scss';
 import Link from 'next/link';
-import Arrow from './assets/arrow.svg';
+import Arrow from './arrow.svg';
 
 const CTA = ({ cta }) => {
 

@@ -1,0 +1,58 @@
+@use "@/styles/variables" as v;
+
+
+
+.ctaFullWidth{
+  position:relative;
+  width:100%;
+  padding: 60px 0px;
+  &--light {background-color: v.$white;}
+  &--dark {background-color: v.$black;}
+  @include v.breakpoint(900px){padding: 30px 0px;}
+
+  // because bigger is always better.
+  .giantcta{
+    font: 700 170px/155px v.$plak-comp;
+    text-transform:uppercase;
+    margin:0px 10px 0px 0px;
+    display:flex;
+    align-items:center;
+    justify-content: flex-start;
+    @include v.breakpoint(1075px){
+      font: 700 100px/125px v.$plak-comp;
+    }
+    @include v.breakpoint(700px){
+      font:700 60px/60px v.$plak-comp;
+    }
+    svg{
+      margin:0px 10px 0px 0px;
+      transform: translate(19px, 17px);
+      width:163px; height:47px;
+      @include v.trans(0.2s);
+      @include v.breakpoint(700px){
+        width:auto; height:auto;
+        transform: translate(16px, 6px);
+      }
+    }
+    &:hover{
+      svg{
+        @include v.trans(0.2s);
+        transform: translate(39px, 17px);
+        @include v.breakpoint(700px){
+          transform: translate(26px, 6px);
+        }
+      }
+    }
+
+    //colors and themes
+    &--black{color:v.$black; svg path{fill:v.$black}}
+    &--white{color:v.$white; svg path{fill:v.$white}}
+    &--yellow{color:v.$yellow; svg path{fill:v.$yellow}}
+    &--blue{color:v.$blue; svg path{fill:v.$blue}}
+    &--pink{color:v.$pink; svg path{fill:v.$pink}}
+    &--teal{color:v.$teal; svg path{fill:v.$teal}}
+    &--red{color:v.$red; svg path{fill:v.$red}}
+    &--gray{color:v.$gray; svg path{fill:v.$gray}}
+  }
+
+}
