@@ -20,9 +20,6 @@ const FormsGravityForm = (props) => {
     form_select
   } = props;
 
-  //key: ck_0ca5cd6a562d3df6f8eb63249d01767cb13394fb
-  //secret: cs_24c59404bb3c1466c6f751ccdbb089af141aef52
-
   //////////////////////////////////////
   // GRAVITY FORMS
 
