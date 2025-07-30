@@ -3,8 +3,6 @@ import CTA from '@/components/CTA/CTA.jsx';
 
 const TextMainContent = (props) => {
 
-  console.log(props);
-
   //////////////////////////////////////
   // ACF FIELDS
   const { 
