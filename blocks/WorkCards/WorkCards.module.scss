@@ -1,0 +1,93 @@
+@use "@/styles/variables" as v;
+
+
+
+.workCards{
+  position:relative;
+  width:100%;
+  padding: 60px 0px;
+  @include v.breakpoint(900px){padding: 30px 0px;}
+
+  .wrap{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 20px;
+    .card{
+      position:relative;
+      padding: 38px;
+      width:calc(50% - 90px);
+      border: 2px solid v.$white;
+      background-color:v.$black;
+      border-radius:32px;
+      @include v.breakpoint(900px){width:100%;}
+      .image{
+        position:relative;
+        width:100%;
+        overflow:hidden;
+        border-radius:32px;
+        aspect-ratio:16/9;
+        img{
+          position: absolute;
+          top: 50%; left: 50%;
+          width: 140%; height: 140%;
+          object-fit: cover;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .text{
+        position:relative;
+        width:100%;
+        overflow:hidden;
+        h3{
+          color: v.$white;
+          font: 400 45px/45px v.$kepler;
+          margin:30px 0px 15px 0px;
+          @include v.breakpoint(900px){
+            font: 400 35px/40px Kepler Std,serif
+          }
+        }
+      }
+      // this for for the first (large) card of 3
+      // displays every 3 cards
+      &:nth-child(3n + 1){
+        width:100%;
+        background-color:transparent;
+        border: 2px solid v.$black;
+        .text h3{color:v.$black;}
+      }
+    }
+  }
+
+  //themes
+  &--light {background-color: v.$white;}
+  &--dark {
+    background-color: v.$black;
+    .wrap {
+      .card {
+        &:nth-child(3n + 1) {
+          .text h3 { color: v.$white; }
+          border: 2px solid v.$white;
+        }
+      }
+    }
+  }
+  // a class that gets triggered when there's less than 3 
+  // cards in the repeater.
+  // this removes the large full-width card from the grid
+  &.no-large{
+    .wrap{
+      .card{
+        &:nth-child(3n + 1){
+          padding: 38px;
+          width:calc(50% - 90px);
+          border: 2px solid v.$white;
+          background-color:v.$black;
+          border-radius:32px;
+        @include v.breakpoint(900px){width:100%;}
+          h3{color:v.$white;}
+        }
+      }
+    } 
+    
+  }
+}

@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 
 const FormsGravityForm = (props) => {
 
-
-  console.log(props);
-
   //////////////////////////////////////
   // STATE
   const [formFields, setFormFields] = useState([]);

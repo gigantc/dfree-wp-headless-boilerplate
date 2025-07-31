@@ -5,10 +5,9 @@
 .ctaFullWidth{
   position:relative;
   width:100%;
-  padding: 60px 0px;
+  padding: 0px 0px 6px 0px;
   &--light {background-color: v.$white;}
   &--dark {background-color: v.$black;}
-  @include v.breakpoint(900px){padding: 30px 0px;}
 
   // because bigger is always better.
   .giantcta{

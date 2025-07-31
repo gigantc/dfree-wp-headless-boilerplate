@@ -18,8 +18,8 @@ body{
   margin:0px;
 }
 //hide the cursor everywhere
-body, a, * {
-  cursor: none;
+body, button, a, input, textarea, select, [role="button"] {
+  cursor: none !important;
 }
 //except the next.js portal cause that sucks in dev
 nextjs-portal, nextjs-portal * {
