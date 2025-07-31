@@ -29,7 +29,7 @@ const Cursor = () => {
       if (e.target.closest('a')) {
         setIsHovering(true);
       }
-      if (e.target.closest('button')) {
+      if (e.target.closest('button, .cursor-hover')) {
         setIsButtoning(true);
       }
       if (e.target.closest('input[type="text"], input[type="email"], input[type="password"], textarea')) {
@@ -42,7 +42,7 @@ const Cursor = () => {
       if (e.target.closest('a')) {
         setIsHovering(false);
       }
-      if (e.target.closest('button')) {
+      if (e.target.closest('button, .cursor-hover')) {
         setIsButtoning(false);
       }
       if (e.target.closest('input[type="text"], input[type="email"], input[type="password"], textarea')) {

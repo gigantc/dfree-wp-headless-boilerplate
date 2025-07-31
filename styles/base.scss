@@ -18,7 +18,7 @@ body{
   margin:0px;
 }
 //hide the cursor everywhere
-body, button, a, input, textarea, select, [role="button"] {
+body, button, a, input, textarea, .cursor-hover, select, [role="button"] {
   cursor: none !important;
 }
 //except the next.js portal cause that sucks in dev

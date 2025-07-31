@@ -11,7 +11,7 @@ const Header = ({siteTitle}) => (
       <img src="https://rrpartners.com/wp-content/themes/rrpartners/logos/current.gif" alt="R&R Partners logo" />
     </Link>
     
-    <div className={styles.hamIcon}>
+    <div className={`${styles.hamIcon} cursor-hover`}>
       <span></span>
       <span></span>
       <span></span>

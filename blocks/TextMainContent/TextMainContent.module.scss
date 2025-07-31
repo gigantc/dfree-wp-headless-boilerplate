@@ -30,7 +30,11 @@
     span{
       display:block;
       flex: 1;
-      h3, p{
+      h3{
+        text-wrap: balance;
+        margin:0px;
+      }
+      p{
         margin:0px;
       }
     }

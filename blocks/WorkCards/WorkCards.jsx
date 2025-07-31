@@ -2,7 +2,6 @@ import styles from './WorkCards.module.scss';
 import CTA from '@/components/CTA/CTA.jsx'
 
 const WorkCards = (props) => {
-console.log(props);
 
 //////////////////////////////////////
 // ACF FIELDS
