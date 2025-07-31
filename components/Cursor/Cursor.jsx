@@ -7,6 +7,7 @@ const Cursor = () => {
   //////////////////////////////////////
   // STATE
   const [isHovering, setIsHovering] = useState(false);
+  const [isButtoning, setIsButtoning] = useState(false);
 
   //////////////////////////////////////
   // RUN-TIME
@@ -27,12 +28,18 @@ const Cursor = () => {
       if (e.target.closest('a')) {
         setIsHovering(true);
       }
+      if (e.target.closest('button')) {
+        setIsButtoning(true);
+      }
     };
 
     const handleMouseOut = (e) => {
       // Reset hover state
       if (e.target.closest('a')) {
         setIsHovering(false);
+      }
+      if (e.target.closest('button')) {
+        setIsButtoning(false);
       }
     };
 
@@ -53,7 +60,12 @@ const Cursor = () => {
   //////////////////////////////////////
   // RENDER
   return (
-    <div className={`${styles.customCursor} ${isHovering ? styles.hovering : ''}`} />
+    <div className=
+    {`
+      ${styles.customCursor} 
+      ${isHovering ? styles.hovering : ''} 
+      ${isButtoning ? styles.buttoning : ''}
+    `} />
   );
 };
 

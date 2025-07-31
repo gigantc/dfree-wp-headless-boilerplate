@@ -8,7 +8,7 @@
   background-color: v.$pink;
   border-radius: 50%;
   pointer-events: none;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) rotate(45deg);
   border:0px solid transparent;
   //z-index is one more than next.js dialog box
   z-index: 2147483647;
@@ -16,13 +16,18 @@
 
   &.hovering{
     cursor:none;
-    // background: transparent url('../../assets/icons/cursor-link.svg') center no-repeat;
-    // background-position: 2.75px 2.5px; 
-    //background-size: 70%;
-    background:transparent;
+    background: transparent url('./cursor-link.svg') center no-repeat;
+    background-position: 1.75px 1.5px; 
+    background-size: 70%;
+    border:3px solid v.$teal;
+    transform: translate(-50%, -50%) scale(1) rotate(-45deg);
+    transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  &.buttoning{
+    cursor:none;
+    background-color:v.$teal;
     border:3px solid v.$teal;
     transform: translate(-50%, -50%) scale(1);
     transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.2s ease-in-out;
-    cursor:none;
   }
 }
