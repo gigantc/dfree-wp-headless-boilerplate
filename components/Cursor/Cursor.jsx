@@ -8,6 +8,7 @@ const Cursor = () => {
   // STATE
   const [isHovering, setIsHovering] = useState(false);
   const [isButtoning, setIsButtoning] = useState(false);
+  const [isInputting, setIsInputting] = useState(false);
 
   //////////////////////////////////////
   // RUN-TIME
@@ -31,6 +32,9 @@ const Cursor = () => {
       if (e.target.closest('button')) {
         setIsButtoning(true);
       }
+      if (e.target.closest('input[type="text"], input[type="email"], input[type="password"], textarea')) {
+        setIsInputting(true);
+      }
     };
 
     const handleMouseOut = (e) => {
@@ -40,6 +44,9 @@ const Cursor = () => {
       }
       if (e.target.closest('button')) {
         setIsButtoning(false);
+      }
+      if (e.target.closest('input[type="text"], input[type="email"], input[type="password"], textarea')) {
+        setIsInputting(false);
       }
     };
 
@@ -65,6 +72,7 @@ const Cursor = () => {
       ${styles.customCursor} 
       ${isHovering ? styles.hovering : ''} 
       ${isButtoning ? styles.buttoning : ''}
+      ${isInputting ? styles.inputting : ''}
     `} />
   );
 };

@@ -12,7 +12,7 @@
   border:0px solid transparent;
   //z-index is one more than next.js dialog box
   z-index: 2147483647;
-  transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.2s ease-in-out, border-radius 0.1s ease-in-out, width 0.2s ease-in-out;
 
   &.hovering{
     cursor:none;
@@ -29,5 +29,14 @@
     border:3px solid v.$teal;
     transform: translate(-50%, -50%) scale(1);
     transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.2s ease-in-out;
+  }
+  &.inputting{
+    cursor:none;
+    background-color:v.$teal;
+    border:1px solid v.$teal;
+    border-radius:0px;
+    width:1px; height:20px;
+    transform: translate(-50%, -50%) scale(1);
+    transition: background-color 0.2s ease-in-out, border 0.2s ease-in-out, transform 0.2s ease-in-out, border-radius 0.1s ease-in-out, width 0.2s ease-in-out;
   }
 }
