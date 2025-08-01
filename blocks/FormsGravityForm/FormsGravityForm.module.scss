@@ -1,0 +1,66 @@
+@use "@/styles/variables" as v;
+
+
+$form-callout-themes: (
+  "yellow": v.$yellow,
+  "red": v.$red,
+  "blue": v.$blue,
+  "gray": v.$gray,
+  "pink": v.$pink,
+  "teal": v.$teal
+);
+
+
+.gravityForm{
+  position:relative;
+  padding:72px 0px 72px 0px;
+  background-color:v.$black;
+  .wrap{
+    position:relative;
+    width:calc(100% - 180px);
+    margin:0px auto;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:20px;
+    @include v.breakpoint(900px){flex-wrap:wrap}
+    .text{
+      @include v.breakpoint(900px){width:100%}
+      h2{
+        font: 700 150px/135px v.$plak-comp;
+        text-transform: uppercase;
+        color:v.$teal;
+        margin:0px 0px 30px 0px;
+        @include v.breakpoint(900px){
+          font: 700 60px / 55px v.$plak-comp;
+          text-align:center;
+        }
+      }
+      p{
+        font: 400 22px/25px v.$plak;
+        color: v.$white;
+        width:80%;
+        @include v.breakpoint(900px){
+          font: 700 18px / 22px v.$plak-comp;
+          text-align:center;
+          width:100%;
+        }
+      }
+    }
+  }
+
+
+  @each $name, $color in $form-callout-themes {
+    &--#{$name}{
+      .wrap{
+        .text{ 
+          h2{color: $color;}
+        }
+      }
+    }
+  }
+
+}
+
+
+

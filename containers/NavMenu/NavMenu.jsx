@@ -1,4 +1,5 @@
 import styles from './NavMenu.module.scss';
+import GravityForm from '@/containers/GravityForm/GravityForm'
 
 import Link from "next/link";
 
@@ -69,8 +70,14 @@ const NavMenu = ({ open, setOpen, props }) => {
 
 
         <div className={styles.col}>
-          <div className="form">
-          FORM
+          <div className="gravityForm">
+              <div className="wrap">
+                <GravityForm 
+                formNum="1"
+                theme = "yellow"
+                />
+              </div>
+             
           </div>
         </div>
 

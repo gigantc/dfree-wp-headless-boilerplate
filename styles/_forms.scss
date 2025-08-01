@@ -1,8 +1,8 @@
 @use "@/styles/variables" as v;
 
 
-// theme colors for the form
-// these are selected via ACF
+
+//THEME COLORS
 $form-callout-themes: (
   "yellow": v.$yellow,
   "red": v.$red,
@@ -12,103 +12,55 @@ $form-callout-themes: (
   "teal": v.$teal
 );
 
-
-// Main styles
-.gravityForm{
-  position:relative;
-  padding:72px 0px 72px 0px;
-  background-color:v.$black;
-
-  .wrap{
-    position:relative;
-    width:calc(100% - 180px);
-    margin:0px auto;
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    gap:20px;
-    @include v.breakpoint(900px){flex-wrap:wrap}
-    .text{
-      @include v.breakpoint(900px){width:100%}
-      h2{
-        font: 700 150px/135px v.$plak-comp;
-        text-transform: uppercase;
-        color:v.$teal;
-        margin:0px 0px 30px 0px;
-        @include v.breakpoint(900px){
-          font: 700 60px / 55px v.$plak-comp;
-          text-align:center;
-        }
-      }
-      p{
-        font: 400 22px/25px v.$plak;
-        color: v.$white;
-        width:80%;
-        @include v.breakpoint(900px){
-          font: 700 18px / 22px v.$plak-comp;
-          text-align:center;
-          width:100%;
-        }
-      }
-     
-    }
-
-    .form{
-      border:1px solid v.$teal;
-      border-radius:32px;
-      padding:27px;
-      width:400px;
-      input, textarea{
-        width:calc(100% - 32px);
-        padding: 14px 16px 18px 16px;
-        background-color:v.$white;
-        border-radius:32px;
-        outline:none;
-        border:none;
-        margin:10px 0px;
-        font: 700 16px/16px v.$plak;
-      }
-      textarea{
-        max-height:100px;
-        resize: none;
-      }
-      ::placeholder {
-        color: v.$black;
-        font: 700 16px/16px v.$plak;
-      }
-      button{
-        border:1px solid transparent;
-        width:100%; height:50px;
-        border-radius:32px;
-        padding:0px 27px;
-        margin:10px 0px 0px 0px;
-        background-color:v.$teal;
-        color: v.$black;
-        font: 700 16px/18px v.$plak;
-        text-transform:uppercase;
-        cursor:pointer;
-        @include v.trans(0.2s);
-        &:hover{
-          background-color:v.$pink;
-          color: v.$white;
-          @include v.trans(0.2s);
-        }
-      }
+//Add to this as we create more styles for different form types
+.form{
+  border:1px solid v.$teal;
+  border-radius:32px;
+  padding:27px;
+  width:400px;
+  input, textarea{
+    width:calc(100% - 32px);
+    padding: 14px 16px 18px 16px;
+    background-color:v.$white;
+    border-radius:32px;
+    outline:none;
+    border:none;
+    margin:10px 0px;
+    font: 700 16px/16px v.$plak;
+  }
+  textarea{
+    max-height:100px;
+    resize: none;
+  }
+  ::placeholder {
+    color: v.$black;
+    font: 700 16px/16px v.$plak;
+  }
+  button{
+    border:1px solid transparent;
+    width:100%; height:50px;
+    border-radius:32px;
+    padding:0px 27px;
+    margin:10px 0px 0px 0px;
+    background-color:v.$teal;
+    color: v.$black;
+    font: 700 16px/18px v.$plak;
+    text-transform:uppercase;
+    cursor:pointer;
+    @include v.trans(0.2s);
+    &:hover{
+      background-color:v.$pink;
+      color: v.$white;
+      @include v.trans(0.2s);
     }
   }
 
-  // add the theme colors into the mix
+  //THEME COLORS SCSS
   @each $name, $color in $form-callout-themes {
-    &--#{$name} {
-      .wrap{
-        .text h2 { color: $color; }
-        .form {
-          border: 1px solid $color;
-          button { background-color: $color; }
-        }
-      }
+    &--#{$name}{
+      border: 1px solid $color;
+      button { background-color: $color; }
     }
   }
-
 }
 

@@ -8,7 +8,8 @@ const FormsGravityForm = (props) => {
   //////////////////////////////////////
   // ACF FIELDS
   const {
-    formNum
+    formNum,
+    theme
   } = props;
 
 
@@ -38,7 +39,7 @@ const FormsGravityForm = (props) => {
   // RENDER
   return (
 
-    <div className="form">
+    <div className={`form form--${theme}`}>
       {loading && <div>Loading form...</div>}
       {!loading && (
         <form>
