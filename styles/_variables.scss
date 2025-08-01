@@ -41,10 +41,10 @@ $plak-comp: 'Neue Plak Compressed', sans-serif;
 }
 
 @mixin trans($sec){
-  -webkit-transition: all ($sec) ease-in-out;
-  -moz-transition: all ($sec) ease-in-out;
-  -o-transition: all ($sec) ease-in-out;
   transition: all ($sec) ease-in-out;
+  // -webkit-transition: all ($sec) ease-in-out;
+  // -moz-transition: all ($sec) ease-in-out;
+  // -o-transition: all ($sec) ease-in-out;
 }
 
 @mixin placeholder {

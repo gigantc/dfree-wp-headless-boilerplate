@@ -1,0 +1,148 @@
+//IMPORTS -----------------------
+@use "@/styles/variables" as v;
+
+
+
+
+
+.navMenu{
+  position:fixed;
+  z-index: 9999;
+  height:100vh; width:calc(100vw - 160px);
+  background-color:v.$black;
+  padding:80px;
+  margin:80px 0px 0px 0px;
+  opacity:0px;
+  visibility:hidden;
+  pointer-events: none;
+  @include v.trans(0.3s);
+  @include v.breakpoint(724px){
+    width:calc(100% - 25px);
+    height:auto;
+    padding:0px 0px 0px 25px;
+    margin:50px 0px 0px 0px;
+  }
+  &.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events: auto;
+    @include v.trans(0.3s);
+  }
+
+  .scrollWrapper{
+    position:relative;
+    overflow-y: auto;
+    height: 100%;
+    width: 100%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    @include v.breakpoint(724px){
+      height: calc(100vh - 300px);
+      overflow-y: auto;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      padding:20px 0px 80px 0px;
+    }
+
+
+    .col{
+      //we are hiding the form col when the window gets down to smaller sizes
+      &:last-of-type{
+        @include v.breakpoint(1070px){display:none;}
+      }
+
+      nav{
+        @include v.breakpoint(724px){
+          width:100%;
+          margin:0px 0px 40px 0px;
+        }
+        a{
+          display:block;
+          width:100%;
+          color: v.$yellow;
+          font:700 80px/80px v.$plak-comp;
+          text-transform:uppercase;
+          overflow:hidden;
+          @include v.trans(0.2s);
+          &:hover{
+            color: v.$pink;
+            @include v.trans(0.2s);
+          }
+        }
+        
+      }
+
+
+
+      &.contact{
+        @include v.breakpoint(724px){width:100%;}
+        .links{
+          p{
+            color: v.$white;
+            font: 400 24px/36px v.$kepler;
+            @include v.breakpoint(724px){font: 400 20px/24px v.$kepler;}
+          }
+          a{
+            display:block;
+            color: v.$yellow;
+            font: 700 18px/21px v.$plak;
+            margin:0px 0px 32px 0px;
+            @include v.trans(0.2s);
+            @include v.breakpoint(724px){font: 700 14px/20px v.$plak;}
+              &:hover{
+                color:v.$pink;
+                @include v.trans(0.2s);
+              }
+          }
+        }
+
+        
+        .social{
+          display:flex;
+          padding:0px;
+          list-style:none;
+          margin:50px 0px;
+          @include v.breakpoint(724px){margin:25px 0px;}
+          li, a{
+            margin:0px 28px 0px 0px;
+            height:21px; width:21px;
+            svg{height:100%;}
+            svg path{
+              fill:v.$white;
+              @include v.trans(0.2s);
+            }
+            &:hover{
+              svg path{
+                fill:v.$pink;
+                @include v.trans(0.2s);
+              }
+            }
+          }
+        }
+
+    
+        .tags{
+          width:50%;
+          a{
+            display:block;
+            color:  v.$white;
+            font: 400 12px/16px  v.$plak;
+            margin:0px 0px 17px 0px;
+            @include v.trans(0.2s);
+            &:hover{
+              color: v.$pink;
+              @include v.trans(0.2s);
+            }
+          }
+          p{
+            color: v.$white;
+            font: 400 12px/16px  v.$plak;
+          }
+        }
+      }
+
+    }
+  }
+}

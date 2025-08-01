@@ -1,7 +1,9 @@
+import { useState } from "react";
 
 import Head from "next/head";
 import Header from "@/containers/Header/Header";
 import Footer from "@/containers/Footer/Footer";
+import NavMenu from "@/containers/NavMenu/NavMenu";
 
 import { PAGE_QUERY } from "../queries/PageQuery";
 import { SITE_DATA_QUERY } from "../queries/SiteSettingsQuery";
@@ -11,9 +13,13 @@ import { getNextStaticProps } from "@faustwp/core";
 
 import BlockRenderer from "@/components/BlockRenderer/BlockRenderer";
 
-//////////////////////////////////////
-// COMPONENT
+
+
 const FrontPage = (props) => {
+
+  //////////////////////////////////////
+  // STATE
+  const [navOpen, setNavOpen] = useState(false);
   
 
   //////////////////////////////////////
@@ -43,7 +49,16 @@ const FrontPage = (props) => {
         <title>{siteTitle}</title>
       </Head>
 
-      <Header siteTitle={siteTitle} />
+      <Header 
+        siteTitle={siteTitle}
+        setNavOpen={setNavOpen}
+        open={navOpen}
+      />
+
+      <NavMenu 
+        open={navOpen} 
+        setOpen={setNavOpen}
+      />
 
       <main>
         <BlockRenderer blocks={typeof blocksRaw === "string" ? JSON.parse(blocksRaw) : blocksRaw} />

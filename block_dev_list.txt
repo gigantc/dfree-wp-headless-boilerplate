@@ -113,7 +113,7 @@ GalleryImageSlider
 ///////////////////////////////
 MISC
 
-&& WorkCards
+** WorkCards
  - Light/Dark Theme
  - Repeater
  	- image
