@@ -1,6 +1,6 @@
 @use "@/styles/variables" as v;
 
-
+//THEME COLORS
 $form-callout-themes: (
   "yellow": v.$yellow,
   "red": v.$red,
@@ -49,7 +49,7 @@ $form-callout-themes: (
     }
   }
 
-
+  //THEME COLORS SCSS
   @each $name, $color in $form-callout-themes {
     &--#{$name}{
       .wrap{

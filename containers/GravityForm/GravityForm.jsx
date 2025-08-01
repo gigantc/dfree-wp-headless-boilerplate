@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 const FormsGravityForm = (props) => {
 
-  console.log(props);
 
   //////////////////////////////////////
   // ACF FIELDS

@@ -1,5 +1,6 @@
 import styles from './TextMainContent.module.scss';
 import CTA from '@/components/CTA/CTA.jsx';
+import classNames from 'classnames';
 
 const TextMainContent = (props) => {
 
@@ -26,12 +27,10 @@ const TextMainContent = (props) => {
   // RENDER
   return (
     <section
-      className={[
+      className={classNames(
         styles.textMainContent,
-        props.theme_type 
-        ? styles[`textMainContent--${theme_type}`] 
-        : ''
-      ].join(' ')}
+        theme_type && styles[`textMainContent--${theme_type}`]
+      )}
     >
       <div className="container">
 

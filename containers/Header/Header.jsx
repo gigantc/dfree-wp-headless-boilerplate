@@ -1,5 +1,5 @@
 import styles from './header.module.scss';
-
+import classNames from 'classnames';
 import Link from "next/link";
 
 
@@ -12,11 +12,11 @@ const Header = ({setNavOpen, open}) => (
     </Link>
     
     <div 
-      className={[
+      className={classNames(
         styles.hamIcon,
         "cursor-hover",
-        open ? styles.open : 'foo'
-      ].join(' ')}
+        { [styles.open]: open }
+      )}
       onClick={() => setNavOpen(prev => !prev)}
     >
       <span></span>

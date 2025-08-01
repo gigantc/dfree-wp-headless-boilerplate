@@ -1,5 +1,6 @@
 import styles from './WorkCards.module.scss';
 import CTA from '@/components/CTA/CTA.jsx'
+import classNames from 'classnames';
 
 const WorkCards = (props) => {
 
@@ -14,11 +15,11 @@ const {
   // RENDER
   return (
     <section
-      className={[
+      className={classNames(
         styles.workCards,
-        theme ? styles[`workCards--${theme}`] : '',
-        cards.length < 3 ? styles['no-large'] : ''
-      ].join(' ')}
+        theme && styles[`workCards--${theme}`],
+        cards.length < 3 && styles['no-large']
+      )}
     >
       <div className={`container ${styles.wrap}`}>
         {cards.length > 0 ? (

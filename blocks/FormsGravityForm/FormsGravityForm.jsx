@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import GravityForm from '@/containers/GravityForm/GravityForm'
 import styles from './FormsGravityForm.module.scss';
 
@@ -21,11 +21,11 @@ const FormsGravityForm = (props) => {
   // RENDER
   return (
     <section
-  className={[
-    styles.gravityForm,
-    theme ? styles[`gravityForm--${theme}`] : ''
-  ].join(' ')}
->
+      className={classNames(
+        styles.gravityForm,
+        theme && styles[`gravityForm--${theme}`]
+      )}
+    >
       
       <div className={styles.wrap}>
         <div className={styles.text}>

@@ -1,6 +1,5 @@
 import React, { Suspense } from "react";
 import { useEffect, useState } from "react";
-
 const WP_URL = process.env.NEXT_PUBLIC_WORDPRESS_URL;
 
 

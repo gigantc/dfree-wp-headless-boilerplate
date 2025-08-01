@@ -1,6 +1,6 @@
 import styles from './NavMenu.module.scss';
 import GravityForm from '@/containers/GravityForm/GravityForm'
-
+import classNames from 'classnames';
 import Link from "next/link";
 
 
@@ -13,11 +13,11 @@ const NavMenu = ({ open, setOpen, props }) => {
   //////////////////////////////////////
   // RENDER
   return (
-    <div 
-      className={[
+    <div
+      className={classNames(
         styles.navMenu,
-        open ? styles.open : ''
-      ].join(' ')}
+        { [styles.open]: open }
+      )}
     >
       <div className={styles.scrollWrapper}>
 

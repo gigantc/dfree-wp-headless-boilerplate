@@ -1,4 +1,5 @@
 import styles from './CtaFullWidth.module.scss';
+import classNames from 'classnames';
 import Link from 'next/link';
 import Arrow from './arrow.svg';
 
@@ -18,28 +19,26 @@ const { url = '#', title = '', target } = link;
 //////////////////////////////////////
 // RENDER
 return (
-    <section
-      className={[
-        styles.ctaFullWidth,
-        theme_type ? styles[`ctaFullWidth--${theme_type}`] : ''
-      ].join(' ')}
-    >
-      <div className="container">
-        <Link
-          className={[
-            styles.giantcta,
-            text_color ? styles[`giantcta--${text_color}`] : ''
-          ].join(' ')}
-          href={url}
-          target={target}
-        >
-          {title}
-          <Arrow />
-        </Link>
-      </div>
-      
-    </section>
-  );
-};
+  <section
+    className={classNames(
+      styles.ctaFullWidth,
+      theme_type && styles[`ctaFullWidth--${theme_type}`]
+    )}
+  >
+    <div className="container">
+      <Link
+        className={classNames(
+          styles.giantcta,
+          text_color && styles[`giantcta--${text_color}`]
+        )}
+        href={url}
+        target={target}
+      >
+        {title}
+        <Arrow />
+      </Link>
+    </div>
+  </section>
+);
 
 export default CTAFullWidth;
