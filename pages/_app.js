@@ -15,7 +15,7 @@ const AppShell2600 = ({ Component, pageProps }) => {
 
   //////////////////////////////////////
   // STATE
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
 
   //////////////////////////////////////
@@ -34,6 +34,10 @@ const AppShell2600 = ({ Component, pageProps }) => {
       router.events.off("routeChangeError", handleComplete);
     };
   }, [router]);
+  //use for the first load of the page (home page)
+  useEffect(() => {
+    setLoading(false); 
+  }, []);
 
 
   //////////////////////////////////////

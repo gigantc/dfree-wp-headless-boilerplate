@@ -82,6 +82,7 @@
           p{
             color: v.$white;
             font: 400 24px/36px v.$kepler;
+            margin:0px;
             @include v.breakpoint(724px){font: 400 20px/24px v.$kepler;}
           }
           a{
