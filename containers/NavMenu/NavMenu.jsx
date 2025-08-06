@@ -66,19 +66,19 @@ const NavMenu = ({ open, setOpen }) => {
     if (open) {
       gsap.fromTo(
         allRefs,
-        { autoAlpha: 0, y: 20 },
+        { autoAlpha: 0, y: 50 },
         {
           autoAlpha: 1,
           y: 0,
           duration: 0.6,
-          stagger: 0.06,
+          stagger: 0.1,
           ease: 'power2.out',
         }
       );
     } else {
       gsap.to(allRefs, {
         autoAlpha: 0,
-        y: 20,
+        y: 50,
         duration: 0.3,
         stagger: 0.04,
         ease: 'power2.in',
@@ -97,18 +97,22 @@ const NavMenu = ({ open, setOpen }) => {
     if (open) {
       gsap.fromTo(
         allRefs,
-        { opacity: 0 },
+        { opacity: 0, y:30 },
         {
           opacity: 1,
-          duration: 0.6,
-          delay:0.8,
+          y: 0,
+          duration: 0.9,
+          delay:1.2,
+          stagger: 0.4,
           ease: 'power2.out',
         }
       );
     } else {
       gsap.to(allRefs, {
         opacity: 0,
+        y: 30,
         duration: 0.3,
+        stagger: 0.04,
         ease: 'power2.in',
       });
     }
@@ -206,22 +210,16 @@ const NavMenu = ({ open, setOpen }) => {
         </div>
 
         
-        <div 
-          className="gravityForm"
-          ref={formRef}
-        >
-          <div className="wrap">
-            <GravityForm 
-              formNum={optionsData.gravityFormNum}
-              theme="yellow"
-            />
-          </div>
+        <div className={styles.gravityForm} ref={formRef}>
+          <p>Sign up for our newsletter</p>
+          <GravityForm 
+            formNum={optionsData.gravityFormNum}
+            theme="yellow"
+          />
         </div>
 
-
-        
-
       </div>
+      
     </div>
   );
 };

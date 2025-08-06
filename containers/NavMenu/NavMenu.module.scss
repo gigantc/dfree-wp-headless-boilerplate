@@ -16,19 +16,12 @@
   visibility:hidden;
   pointer-events: none;
   transition: none;
-  // @include v.trans(0.3s);
   @include v.breakpoint(724px){
     width:calc(100% - 25px);
     height:auto;
     padding:0px 0px 0px 25px;
     margin:50px 0px 0px 0px;
   }
-  // &.open{
-  //   opacity:1;
-  //   visibility:visible;
-  //   pointer-events: auto;
-  //   @include v.trans(0.3s);
-  // }
 
   .scrollWrapper{
     position:relative;
@@ -147,15 +140,17 @@
 
       }
 
-      .gravityForm{
-          p{
-            font: 700 40px/40px v.$plak-comp;
-            text-transform: uppercase;
-            margin: -4px 0 17px 30px;
-            color:v.$white;
-          }
-        }
-
     }
+
+    .gravityForm{
+      p{
+        font: 700 40px/40px v.$plak-comp;
+        text-transform: uppercase;
+        margin: -4px 0 17px 30px;
+        color:v.$white;
+      }
+    }
+
+
   }
 }
