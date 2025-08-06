@@ -2,17 +2,52 @@ import React, { Suspense } from "react";
 import { useEffect, useState } from "react";
 const WP_URL = process.env.NEXT_PUBLIC_WORDPRESS_URL;
 
+import Loader from "@/components/Loader/Loader";
+
 
 //////////////////////////////////////
-// UTILITY 
-// Convert example 'acf/home-hero' => 'HomeHero'
-// this will have to be a format used when creating blocks
+// UTILITIES
+
+// -------------------------------------------
+// Converts example 'acf/home-hero' => 'HomeHero'
+// this will have to be the format used when creating blocks
+// TODO: find a way to make this not need strict nameing.
+//
+// example: a block in ACF with a slug "home-hero"
+// must have a component named "HomeHero" of it won't connect
 const pascalCase = (slug) =>
   slug
     .replace(/^acf\//, '')
     .split('-')
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join('');
+
+
+// -------------------------------------------
+// Dynamic Block Component Loader (with Cache)
+//
+// This helper loads React block components on demand,
+// using PascalCase block names that match your folder structure.
+// Components are lazy-loaded and cached to avoid multiple imports,
+// which helps NOT re-render when tons of blocks are on a page.
+//
+// Used below in BlockRenderer to dynamically render
+// ACF/WordPress blocks as React components, based on blockName.
+//
+// If a component does not exist for a block, it renders a fallback.
+//
+// Example: blockName 'acf/home-hero' -> 'HomeHero' -> @/blocks/HomeHero/HomeHero.jsx
+const componentCache = {};
+const getBlockComponent = (name) => {
+  if (!componentCache[name]) {
+    componentCache[name] = React.lazy(() =>
+      import(`@/blocks/${name}/${name}.jsx`).catch(() => ({
+        default: () => <div>Missing block: {name}</div>
+      }))
+    );
+  }
+  return componentCache[name];
+}
 
 
 //////////////////////////////////////
@@ -153,10 +188,14 @@ const hydrateMedia = (value, mediaMap) => {
 
 
 
+
+//////////////////////////////////////
+//////////////////////////////////////
 //////////////////////////////////////
 // CORE RENDERER
 const BlockRenderer = ({ blocks }) => {
   const [imageMap, setImageMap] = useState({});
+
 
   // Fetch and cache all media IDs referenced in blocks
   useEffect(() => {
@@ -189,18 +228,14 @@ const BlockRenderer = ({ blocks }) => {
     // Convert blockName to PascalCase to match filename
     const ComponentName = pascalCase(block.blockName);
     // Dynamically import the block component; fallback if missing
-    const BlockComponent = React.lazy(() =>
-      import(`@/blocks/${ComponentName}/${ComponentName}.jsx`).catch(() => ({
-        default: () => <div>Missing block: {ComponentName}</div>
-      }))
-    );
+    const BlockComponent = getBlockComponent(ComponentName);
 
     // Compose props:
     // 1. Unflatten repeaters
     // 2. Unflatten groups
     // 3. Hydrate media fields
     // 4. Remove meta/flattened keys
-    // functions above handle this
+    // the functions above handle this
     const hydratedProps = cleanProps(
       hydrateMedia(
         collectGroups(collectRepeaters(block.attrs?.data || {})),
@@ -209,7 +244,7 @@ const BlockRenderer = ({ blocks }) => {
     );
 
     return (
-      <Suspense fallback={<div>Loading...</div>} key={i}>
+      <Suspense fallback={<Loader />}>
         <BlockComponent {...hydratedProps} />
       </Suspense>
     );
