@@ -40,11 +40,16 @@ $plak-comp: 'Neue Plak Compressed', sans-serif;
   @media screen and (min-width: $size) { @content; } 
 }
 
+//legacy trans. I'm pretty sure this is used in places.
+// here for a fallback
 @mixin trans($sec){
   transition: all ($sec) ease-in-out;
-  // -webkit-transition: all ($sec) ease-in-out;
-  // -moz-transition: all ($sec) ease-in-out;
-  // -o-transition: all ($sec) ease-in-out;
+}
+//new trans
+// example call for a color and margin transition
+// @include v.trans(color margin, 0.2s);
+@mixin trans($props, $sec: 0.2s) {
+  transition: #{$props} #{$sec} ease-in-out;
 }
 
 @mixin placeholder {
