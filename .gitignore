@@ -1,0 +1,16 @@
+node_modules
+.next
+.env.local
+.env*.local
+next-env.d.ts
+
+# Auto-generated
+blocks/manifest.json
+components/manifest.json
+lib/blocks/imports.ts
+lib/wp/generated.ts
+
+# System
+.DS_Store
+.vscode
+*.log

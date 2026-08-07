@@ -1,0 +1,39 @@
+@use "styles/variables" as v;
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  @include v.trans(background-color color, 0.15s);
+}
+
+.primary {
+  background: v.$accent;
+  color: v.$white;
+
+  &:hover {
+    background: v.$black;
+  }
+}
+
+.secondary {
+  background: transparent;
+  color: v.$black;
+  border: 1px solid v.$black;
+
+  &:hover {
+    background: v.$black;
+    color: v.$white;
+  }
+}
+
+.text {
+  background: transparent;
+  color: v.$accent;
+  padding: 12px 0;
+
+  &:hover {
+    color: v.$black;
+  }
+}

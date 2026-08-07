@@ -1,0 +1,33 @@
+// ---------------------------------------------------------------------------
+// Design tokens
+// Replace these with your project's brand values. Import via `@use` from any
+// block/component SCSS module: `@use "styles/variables" as v;`
+// ---------------------------------------------------------------------------
+
+// Colors
+$black: #111;
+$white: #fff;
+$gray: #888;
+$accent: #0055ff;
+
+// Fonts — replace with self-hosted @font-face declarations in _fonts.scss
+$font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$font-serif: Georgia, "Times New Roman", serif;
+$font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+// Layout
+$container-max: 1400px;
+$container-gutter: 90px;
+
+// Breakpoints
+@mixin breakpoint($size) {
+  @media screen and (max-width: $size) { @content; }
+}
+@mixin breakpoint-min($size) {
+  @media screen and (min-width: $size) { @content; }
+}
+
+// Transitions
+@mixin trans($props: all, $sec: 0.2s) {
+  transition: #{$props} #{$sec} ease-in-out;
+}

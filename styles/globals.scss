@@ -1,0 +1,22 @@
+// ---------------------------------------------------------------------------
+// Global stylesheet — imported once in app/layout.tsx.
+// Block/component styles live in their own .module.scss files (scoped).
+// ---------------------------------------------------------------------------
+
+@use "./variables" as v;
+@use "./fonts" as *;
+@use "./reset" as *;
+
+body {
+  background: v.$white;
+  color: v.$black;
+  font-family: v.$font-sans;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: v.$container-max;
+  width: calc(100% - #{v.$container-gutter * 2});
+  margin: 0 auto;
+}
