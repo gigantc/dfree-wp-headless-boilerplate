@@ -20,10 +20,10 @@ export type WpFetchOptions = {
   authToken?: string;
 };
 
-export async function wpFetch<T = unknown>(
+export const wpFetch = async <T = unknown>(
   query: string,
   options: WpFetchOptions = {}
-): Promise<T> {
+): Promise<T> => {
   if (!endpoint) {
     throw new Error(
       "WORDPRESS_GRAPHQL_ENDPOINT is not set. Copy .env.local.example to .env.local."
@@ -58,4 +58,4 @@ export async function wpFetch<T = unknown>(
   }
 
   return json.data as T;
-}
+};

@@ -9,13 +9,13 @@ type ButtonProps = {
   className?: string;
 };
 
-export default function Button({
+const Button = ({
   href,
   children,
   variant = "primary",
   target = "_self",
   className = "",
-}: ButtonProps) {
+}: ButtonProps) => {
   const classes = [styles.button, styles[variant], className].filter(Boolean).join(" ");
 
   return (
@@ -23,4 +23,6 @@ export default function Button({
       {children}
     </Link>
   );
-}
+};
+
+export default Button;

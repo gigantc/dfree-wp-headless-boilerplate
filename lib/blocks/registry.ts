@@ -12,7 +12,7 @@ import type { BlocksManifest, BlockManifestEntry } from "./types";
 
 let cached: BlocksManifest | null = null;
 
-async function loadManifest(): Promise<BlocksManifest> {
+const loadManifest = async (): Promise<BlocksManifest> => {
   if (cached) return cached;
   try {
     const mod = await import("@/blocks/manifest.json");
@@ -21,21 +21,19 @@ async function loadManifest(): Promise<BlocksManifest> {
   } catch {
     return { generated: "", blocks: {} };
   }
-}
+};
 
 /**
  * Look up a block's manifest entry by slug (e.g. "hero-page").
  */
-export async function getBlockEntry(slug: string): Promise<BlockManifestEntry | null> {
+export const getBlockEntry = async (slug: string): Promise<BlockManifestEntry | null> => {
   const manifest = await loadManifest();
   return manifest.blocks[slug] ?? null;
-}
+};
 
 /**
  * Resolve `acf/hero-page` → "hero-page".
  * Non-ACF blocks (`core/paragraph` etc.) pass through unchanged; they won't
  * appear in the manifest and will render as a fallback.
  */
-export function normalizeSlug(blockName: string): string {
-  return blockName.replace(/^acf\//, "");
-}
+export const normalizeSlug = (blockName: string): string => blockName.replace(/^acf\//, "");

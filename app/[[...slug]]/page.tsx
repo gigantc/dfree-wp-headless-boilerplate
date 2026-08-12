@@ -25,7 +25,7 @@ type Props = {
   params: Promise<{ slug?: string[] }>;
 };
 
-export default async function CatchAllPage({ params }: Props) {
+const CatchAllPage = async ({ params }: Props) => {
   const { slug } = await params;
   const uri = slug?.length ? `/${slug.join("/")}/` : "/";
 
@@ -70,4 +70,6 @@ export default async function CatchAllPage({ params }: Props) {
         </main>
       );
   }
-}
+};
+
+export default CatchAllPage;

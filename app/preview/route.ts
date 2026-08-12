@@ -15,7 +15,7 @@ import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 import type { NextRequest } from "next/server";
 
-export async function GET(req: NextRequest) {
+export const GET = async (req: NextRequest) => {
   const { searchParams } = new URL(req.url);
   const secret = searchParams.get("secret");
   const uri = searchParams.get("uri") ?? "/";
@@ -28,4 +28,4 @@ export async function GET(req: NextRequest) {
   dm.enable();
 
   redirect(uri);
-}
+};

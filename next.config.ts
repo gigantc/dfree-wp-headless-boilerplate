@@ -2,11 +2,15 @@ import type { NextConfig } from "next";
 import path from "node:path";
 
 const wpUrl = process.env.NEXT_PUBLIC_WORDPRESS_URL ?? "";
-const wpHost = (() => {
+const wpParsed = (() => {
   try {
-    return new URL(wpUrl).hostname;
+    const u = new URL(wpUrl);
+    return {
+      hostname: u.hostname,
+      protocol: u.protocol.replace(":", "") as "http" | "https",
+    };
   } catch {
-    return "";
+    return null;
   }
 })();
 
@@ -15,8 +19,8 @@ const config: NextConfig = {
     root: __dirname,
   },
   images: {
-    remotePatterns: wpHost
-      ? [{ protocol: "https", hostname: wpHost }]
+    remotePatterns: wpParsed
+      ? [{ protocol: wpParsed.protocol, hostname: wpParsed.hostname }]
       : [],
   },
   sassOptions: {

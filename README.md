@@ -18,9 +18,11 @@ resolved from a `manifest.json` that mirrors the PHP theme's block registry.
 - Node 20+
 - A WordPress install with:
   - [WPGraphQL](https://wordpress.org/plugins/wp-graphql/)
-  - [WPGraphQL for ACF](https://github.com/wp-graphql/wpgraphql-acf)
-  - [WP GraphQL Content Blocks](https://github.com/wpengine/wp-graphql-content-blocks)
-  - Advanced Custom Fields Pro (or free, if the fields you need are supported)
+  - Advanced Custom Fields (Pro or free)
+  - **[register-blocks-for-acf](https://github.com/gigantc/register-blocks-for-acf)** — the sister WP-side plugin. It does two jobs for the headless setup:
+    (a) an admin UI for defining ACF blocks (each block a CPT entry, no PHP to write), and
+    (b) adds `blocksRaw` + `acfFields` fields to WPGraphQL's `ContentNode` interface — which is what this boilerplate's `BlockRenderer` consumes.
+  - Optional: [WPGraphQL for ACF](https://github.com/wp-graphql/wpgraphql-acf) — needed only if you want typed ACF access outside of blocks (options pages, per-taxonomy fields).
   - Any theme (Twenty Twenty-Five is fine — this is headless, the WP theme
     never renders on the frontend)
 
@@ -156,15 +158,19 @@ dfree-wp-headless-boilerplate/
 
 This repo is frontend-only. The WordPress install needs:
 
-1. **Plugins** — WPGraphQL, WPGraphQL for ACF, WP GraphQL Content Blocks, ACF Pro.
-2. **ACF block registrations** — each block registered via `acf_register_block_type()`
-   with a name matching a folder here (`hero-page` → `blocks/hero/HeroPage/`).
-   Recommended: live in a small mu-plugin so the active WP theme stays vanilla.
+1. **Plugins** — WPGraphQL, ACF (Pro or free), and
+   [`register-blocks-for-acf`](https://github.com/gigantc/register-blocks-for-acf).
+   The last one is the WP-side sister of this boilerplate — it provides the
+   admin UI for defining blocks and the GraphQL fields (`blocksRaw`,
+   `acfFields` on `ContentNode`) that the frontend renderer consumes.
+2. **ACF block registrations** — done in wp-admin via
+   `register-blocks-for-acf`. Each block's slug (e.g. `hero-page`) must match a
+   folder here in kebab-case (`blocks/hero/HeroPage/`).
 3. **CORS / GraphQL access** — WPGraphQL allows public queries by default;
-   configure auth if you need protected fields.
-4. **Menu locations** — register with `register_nav_menus()` in the mu-plugin.
-
-A companion `dfree-wp-headless-mu-plugin` repo will handle #2 and #4 (TBD).
+   configure auth if you need protected fields (or use WPGraphQL Headless Login
+   for authenticated preview).
+4. **Menu locations** — register with `register_nav_menus()` in a small
+   per-site mu-plugin (out of scope for this boilerplate; site-specific).
 
 ## Deployment
 

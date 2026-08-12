@@ -17,7 +17,7 @@ import type { RawBlock } from "./types";
 
 type BlocksRawInput = string | RawBlock[] | null | undefined;
 
-function parseBlocks(input: BlocksRawInput): RawBlock[] {
+const parseBlocks = (input: BlocksRawInput): RawBlock[] => {
   if (!input) return [];
   if (typeof input === "string") {
     try {
@@ -27,9 +27,9 @@ function parseBlocks(input: BlocksRawInput): RawBlock[] {
     }
   }
   return input;
-}
+};
 
-async function renderOne(block: RawBlock, index: number) {
+const renderOne = async (block: RawBlock, index: number) => {
   if (!block.blockName) return null;
 
   const slug = normalizeSlug(block.blockName);
@@ -58,10 +58,10 @@ async function renderOne(block: RawBlock, index: number) {
   const props = shapeAcfProps(block.attrs?.data ?? {});
 
   return <Component key={index} {...props} />;
-}
+};
 
-export async function BlockRenderer({ blocks }: { blocks: BlocksRawInput }) {
+export const BlockRenderer = async ({ blocks }: { blocks: BlocksRawInput }) => {
   const parsed = parseBlocks(blocks);
   const rendered = await Promise.all(parsed.map((b, i) => renderOne(b, i)));
   return <>{rendered}</>;
-}
+};

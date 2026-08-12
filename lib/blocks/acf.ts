@@ -19,7 +19,7 @@ export type AcfData = Record<string, unknown>;
  * it back under `key`. Leaves the flattened source keys in place — `cleanProps`
  * strips them at the end of the pipeline.
  */
-export function collectRepeaters(data: AcfData): AcfData {
+export const collectRepeaters = (data: AcfData): AcfData => {
   const out: AcfData = { ...data };
 
   for (const key of Object.keys(data)) {
@@ -55,7 +55,7 @@ export function collectRepeaters(data: AcfData): AcfData {
  * Groups are represented as an empty string / null at `key`, with children at
  * `key_child1`, `key_child2`, etc. Collect the children into a nested object.
  */
-export function collectGroups(data: AcfData): AcfData {
+export const collectGroups = (data: AcfData): AcfData => {
   const out: AcfData = { ...data };
 
   for (const groupKey of Object.keys(data)) {
@@ -88,7 +88,7 @@ export function collectGroups(data: AcfData): AcfData {
  * Strip ACF meta keys (`_field`) and leftover flattened repeater keys (`field_0_child`).
  * Run last, after repeaters and groups have been collected.
  */
-export function cleanProps(props: AcfData): AcfData {
+export const cleanProps = (props: AcfData): AcfData => {
   const cleaned: AcfData = {};
 
   for (const [key, value] of Object.entries(props)) {
@@ -104,6 +104,5 @@ export function cleanProps(props: AcfData): AcfData {
  * Full ACF shaping pipeline: repeaters → groups → strip meta.
  * This is what a block renderer typically wants.
  */
-export function shapeAcfProps(raw: AcfData): AcfData {
-  return cleanProps(collectGroups(collectRepeaters(raw)));
-}
+export const shapeAcfProps = (raw: AcfData): AcfData =>
+  cleanProps(collectGroups(collectRepeaters(raw)));

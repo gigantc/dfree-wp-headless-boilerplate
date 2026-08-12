@@ -11,16 +11,16 @@ type SiteSettings = {
   };
 };
 
-async function getSiteSettings(): Promise<SiteSettings["generalSettings"] | null> {
+const getSiteSettings = async (): Promise<SiteSettings["generalSettings"] | null> => {
   try {
     const data = await wpFetch<SiteSettings>(SITE_SETTINGS_QUERY, { revalidate: 3600 });
     return data.generalSettings ?? null;
   } catch {
     return null;
   }
-}
+};
 
-export async function generateMetadata(): Promise<Metadata> {
+export const generateMetadata = async (): Promise<Metadata> => {
   const settings = await getSiteSettings();
   return {
     title: {
@@ -29,12 +29,12 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: settings?.description ?? undefined,
   };
-}
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
+const RootLayout = ({ children }: { children: React.ReactNode }) => (
+  <html lang="en">
+    <body>{children}</body>
+  </html>
+);
+
+export default RootLayout;

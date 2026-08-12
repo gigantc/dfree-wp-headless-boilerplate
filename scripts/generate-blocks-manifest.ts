@@ -32,14 +32,13 @@ const IMPORTS_OUTPUT = join(process.cwd(), "lib/blocks/imports.ts");
 
 const IGNORE = new Set(["node_modules", ".DS_Store"]);
 
-function pascalToKebab(name: string): string {
-  return name
+const pascalToKebab = (name: string): string =>
+  name
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
     .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
     .toLowerCase();
-}
 
-function walkCategory(category: string): BlockEntry[] {
+const walkCategory = (category: string): BlockEntry[] => {
   const dir = join(BLOCKS_DIR, category);
   if (!existsSync(dir)) return [];
 
@@ -74,9 +73,9 @@ function walkCategory(category: string): BlockEntry[] {
       };
     })
     .filter((e): e is BlockEntry => e !== null);
-}
+};
 
-function main() {
+const main = () => {
   if (!existsSync(BLOCKS_DIR)) {
     console.warn("[blocks] No blocks/ directory found, skipping manifest generation.");
     return;
@@ -125,6 +124,6 @@ function main() {
   ].join("\n");
   writeFileSync(IMPORTS_OUTPUT, importsSrc);
   console.log(`[blocks] Wrote imports map to ${relative(process.cwd(), IMPORTS_OUTPUT)}`);
-}
+};
 
 main();

@@ -24,14 +24,13 @@ const COMPONENTS_DIR = join(process.cwd(), "components");
 const OUTPUT = join(COMPONENTS_DIR, "manifest.json");
 const IGNORE = new Set(["node_modules", ".DS_Store"]);
 
-function pascalToKebab(name: string): string {
-  return name
+const pascalToKebab = (name: string): string =>
+  name
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
     .replace(/([A-Z]+)([A-Z][a-z])/g, "$1-$2")
     .toLowerCase();
-}
 
-function main() {
+const main = () => {
   if (!existsSync(COMPONENTS_DIR)) {
     console.warn("[components] No components/ directory found, skipping.");
     return;
@@ -74,6 +73,6 @@ function main() {
   console.log(
     `[components] Wrote ${count} component${count === 1 ? "" : "s"} to ${relative(process.cwd(), OUTPUT)}`
   );
-}
+};
 
 main();

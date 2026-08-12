@@ -5,13 +5,13 @@ type HeroPageProps = {
   subheadline?: string;
 };
 
-export default function HeroPage({ headline, subheadline }: HeroPageProps) {
-  return (
-    <section className={styles.hero}>
-      <div className="container">
-        {headline ? <h1>{headline}</h1> : null}
-        {subheadline ? <p className={styles.subheadline}>{subheadline}</p> : null}
-      </div>
-    </section>
-  );
-}
+const HeroPage = ({ headline, subheadline }: HeroPageProps) => (
+  <section className={styles.hero}>
+    <div className="container">
+      {headline ? <h1>{headline}</h1> : null}
+      {subheadline ? <p className={styles.subheadline}>{subheadline}</p> : null}
+    </div>
+  </section>
+);
+
+export default HeroPage;

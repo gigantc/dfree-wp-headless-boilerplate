@@ -1,7 +1,7 @@
 {
   "name": "dfree-wp-headless-boilerplate",
   "version": "1.0.0",
-  "description": "A Next.js + TypeScript + WPGraphQL boilerplate for building headless WordPress sites. Sister to dfree's PHP theme boilerplate.",
+  "description": "Next.js + TypeScript + WPGraphQL headless WordPress boilerplate. Sister to dfree's PHP theme boilerplate. See CLAUDE.md for architecture and the Backport Rule.",
   "author": "dFree",
   "private": true,
   "scripts": {
